@@ -1,8 +1,17 @@
 .profile-info__name {
-  min-width: fit-content;
+  margin: 0;
+  padding: 0;
   max-height: 39px;
-  display: flex;
-  flex-direction: row;
-  column-gap: 18px;
-  align-items: baseline;
+  color: #fff;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+}
+
+@media screen and (max-width: 320px) {
+  .profile-info__name {
+    max-height: 26px;
+    font-size: 27px;
+    line-height: 33px;
+  }
 }
