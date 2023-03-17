@@ -1,11 +1,11 @@
-.profile-info__edit-button {
+.profile__edit-button {
   margin-left: 18px;
   max-width: 24px;
   max-width: 24px;
 }
 
 @media screen and (max-width: 320px) {
-  .profile-info__edit-button {
+  .profile__edit-button {
     margin-left: 10px;
     max-width: 18px;
     max-width: 18px;
