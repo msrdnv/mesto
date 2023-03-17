@@ -21,3 +21,5 @@
 
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__text/element__text.css);
+@import url(../blocks/element/__like-button/element__like-button.css);

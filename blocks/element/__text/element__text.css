@@ -1,0 +1,12 @@
+.element__text {
+  margin: 25px auto 31px 21px;
+  padding: 0;
+  max-width: 200px;
+  color: #000;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  grid-area: element-text;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
