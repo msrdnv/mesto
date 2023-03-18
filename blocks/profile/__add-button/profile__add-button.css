@@ -2,11 +2,11 @@
   position: sticky;
   right: 27px;
   max-width: 150px;
+  max-height: 50px;
 }
 
 @media screen and (max-width: 635px) {
   .profile__add-button {
-    position: static;
-    max-width: 282px;
+    display: none;
   }
 }
