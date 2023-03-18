@@ -1,0 +1,10 @@
+.popup__title {
+  margin: 42px 0 54px 36px;
+  padding: 0;
+  max-width: 330px;
+  max-height: 23px;
+  color: #000;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
