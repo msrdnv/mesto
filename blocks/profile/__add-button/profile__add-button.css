@@ -4,7 +4,7 @@
   max-width: 150px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 635px) {
   .profile__add-button {
     position: static;
     max-width: 282px;

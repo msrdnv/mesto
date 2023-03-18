@@ -4,7 +4,15 @@
   max-width: 24px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 934px) and (min-width: 635px) {
+  .profile__edit-button {
+    margin-left: 14px;
+    max-width: 21px;
+    max-width: 21px;
+  }
+}
+
+@media screen and (max-width: 635px) {
   .profile__edit-button {
     margin-left: 10px;
     max-width: 18px;

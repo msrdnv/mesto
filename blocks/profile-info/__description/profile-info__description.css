@@ -5,13 +5,18 @@
   color: #fff;
   font-weight: 400;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 1.21;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 934px) and (min-width: 635px) {
+  .profile-info__description {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 635px) {
   .profile-info__description {
     max-height: 14px;
     font-size: 14px;
-    line-height: 17px;
   }
 }

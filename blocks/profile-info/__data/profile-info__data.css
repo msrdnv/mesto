@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 635px) {
   .profile-info__data {
     row-gap: 14px;
     align-items: center;

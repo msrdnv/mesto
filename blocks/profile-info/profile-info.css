@@ -8,11 +8,10 @@
   column-gap: 30px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 635px) {
   .profile-info {
     align-items: center;
     position: static;
-    margin: 26px auto 36px;
     max-width: 282px;
     flex-direction: column;
     row-gap: 26px;
