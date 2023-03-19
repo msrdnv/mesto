@@ -1,6 +1,6 @@
 .profile__text-data {
   max-width: 336px;
-  max-height: 73px;
+  min-height: 73px;
   display: grid;
   grid-template-areas:
   "name edit-button"
