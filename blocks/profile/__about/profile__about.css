@@ -1,4 +1,5 @@
 .profile__about {
+  grid-area: about;
   margin: 0;
   padding: 0;
   max-height: 18px;

@@ -1,14 +1,19 @@
 .profile__text-data {
-  display: flex;
-  flex-direction: column;
+  max-width: 336px;
+  max-height: 73px;
+  display: grid;
+  grid-template-areas:
+  "name edit-button"
+  "about none";
   row-gap: 16px;
-  justify-content: center;
+  align-items: baseline;
+  align-content: center;
 }
 
 @media screen and (max-width: 635px) {
   .profile__text-data {
     row-gap: 14px;
-    align-items: center;
+    justify-items: center;
   }
 }
 
