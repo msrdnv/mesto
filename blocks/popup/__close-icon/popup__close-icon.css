@@ -1,6 +1,16 @@
 .popup__close-icon {
+  position: relative;
   width: 32px;
   height: 32px;
-  margin-left: 438px;
-  margin-top: -40px;
+  left: 438px;
+  bottom: 40px;
+}
+
+@media screen and (max-width: 635px) {
+  .popup__close-icon {
+    width: 20px;
+    height: 20px;
+    left: 262px;
+    bottom: 36px;
+  }
 }

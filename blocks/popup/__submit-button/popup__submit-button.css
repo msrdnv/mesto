@@ -3,3 +3,14 @@
   max-width: 358px;
   max-height: 50px;
 }
+
+@media screen and (max-width: 635px) {
+  .popup__submit-button {
+    margin: 0 22px 25px 22px;
+    max-width: 238px;
+    min-height: 46px;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+}

@@ -2,8 +2,15 @@
   margin: auto;
   background-color: #FFF;
   width: 430px;
-  height: 330px;
+  min-height: 330px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 635px) {
+  .popup__container {
+    width: 282px;
+    min-height: 322px;
+  }
 }

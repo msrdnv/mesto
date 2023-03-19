@@ -1,0 +1,11 @@
+.profile__add-button_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 635px) {
+  .profile__add-button_mobile {
+    display: block;
+    width: 282px;
+    height: 50px;
+  }
+}
