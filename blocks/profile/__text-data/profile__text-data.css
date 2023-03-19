@@ -1,4 +1,4 @@
-.profile-info__data {
+.profile__text-data {
   display: flex;
   flex-direction: column;
   row-gap: 16px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 635px) {
-  .profile-info__data {
+  .profile__text-data {
     row-gap: 14px;
     align-items: center;
   }
