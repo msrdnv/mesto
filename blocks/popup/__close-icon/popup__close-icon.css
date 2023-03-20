@@ -4,6 +4,11 @@
   height: 32px;
   left: 438px;
   bottom: 40px;
+  cursor: pointer;
+}
+
+.popup__close-icon:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 635px) {
