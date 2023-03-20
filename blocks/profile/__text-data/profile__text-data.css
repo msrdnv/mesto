@@ -1,19 +1,27 @@
 .profile__text-data {
-  max-width: 336px;
-  min-height: 73px;
+  max-width: 563px;
+  max-height: 73px;
   display: grid;
   grid-template-areas:
-  "name edit-button"
-  "about none";
-  row-gap: 16px;
+  "name name-edit-button"
+  "about about";
+  row-gap: 8px;
   align-items: baseline;
   align-content: center;
 }
 
+@media screen and (max-width: 934px) and (min-width: 635px) {
+  .profile__text-data {
+    max-width: 268px;
+  }
+}
+
 @media screen and (max-width: 635px) {
   .profile__text-data {
-    row-gap: 14px;
+    max-height: 54px;
+    max-width: 282px;
     justify-items: center;
+    align-content: normal;
   }
 }
 

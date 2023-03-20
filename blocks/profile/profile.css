@@ -14,5 +14,7 @@
     max-width: 282px;
     min-height: 286px;
     row-gap: 36px;
+    justify-content: normal;
+    align-items: normal;
   }
 }
