@@ -1,5 +1,5 @@
 .profile__name {
-  grid-area: name;
+  grid-area: name-edit-button;
   margin: 0;
   padding: 0;
   color: #fff;
@@ -21,12 +21,8 @@
 
 @media screen and (max-width: 635px) {
   .profile__name {
-    margin-left: 38px;
-    max-width: 254px;
+    max-width: 230px;
     font-size: 27px;
     line-height: 33px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
   }
 }

@@ -1,6 +1,6 @@
 .profile__edit-button {
   grid-area: name-edit-button;
-  margin: 0 0 0 18px;
+  margin: 0;
   padding: 0;
   border: none;
   width: 24px;
@@ -8,6 +8,9 @@
   cursor: pointer;
   background: url(../../../images/edit-button.svg) transparent no-repeat;
   background-size: contain;
+  justify-self: end;
+  position: relative;
+  left: 42px;
   }
 
 .profile__edit-button:hover {
@@ -16,7 +19,7 @@
 
 @media screen and (max-width: 934px) and (min-width: 635px) {
   .profile__edit-button {
-    margin: 0 0 0 14px;
+    left: 35px;
     width: 21px;
     height: 21px;
   }
@@ -24,8 +27,8 @@
 
 @media screen and (max-width: 635px) {
   .profile__edit-button {
-    justify-self: start;
-    margin: 0;
+    position: relative;
+    left: -19px;
     width: 18px;
     height: 18px;
   }
