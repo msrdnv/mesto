@@ -6,7 +6,7 @@
   width: 22px;
   height: 19px;
   cursor: pointer;
-  background: url('../../../images/like-button.svg') transparent;
+  background: url('../../../images/like-button.svg') transparent no-repeat;
   background-size: contain;
   }
 

@@ -8,7 +8,7 @@
   left: 438px;
   bottom: 40px;
   cursor: pointer;
-  background: url(../../../images/close-icon.svg) transparent;
+  background: url(../../../images/close-icon.svg) transparent no-repeat;
   background-size: contain;
 }
 

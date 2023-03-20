@@ -6,7 +6,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
-  background: url(../../../images/edit-button.svg) transparent;
+  background: url(../../../images/edit-button.svg) transparent no-repeat;
   background-size: contain;
   }
 
