@@ -1,10 +1,15 @@
 .popup__close-icon {
+  margin: 0;
+  padding: 0;
+  border: none;
   position: relative;
   width: 32px;
   height: 32px;
   left: 438px;
   bottom: 40px;
   cursor: pointer;
+  background: url(../../../images/close-icon.svg) transparent;
+  background-size: contain;
 }
 
 .popup__close-icon:hover {

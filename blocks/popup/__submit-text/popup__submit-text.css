@@ -1,0 +1,14 @@
+.popup__submit-text {
+  margin: auto;
+  padding: 0;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+}
+
+@media screen and (max-width: 635px) {
+  .popup__submit-text {
+    font-size: 14px;
+  }
+}
