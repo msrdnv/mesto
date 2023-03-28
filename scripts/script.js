@@ -29,4 +29,39 @@ function handleFormSubmit (event) {
 
 popupForm.addEventListener('submit', handleFormSubmit);
 
+const initialCards = [
+  {
+    name: 'Кронплатц',
+    link: './images/01-kronplatz.jpg'
+  },
+  {
+    name: 'Экрен',
+    link: './images/02-ecrins.jpg'
+  },
+  {
+    name: 'Солт-Лейк-Сити',
+    link: './images/03-salt_lake.jpg'
+  },
+  {
+    name: 'Сиуатанехо',
+    link: './images/04-zihuatanejo.jpg'
+  },
+  {
+    name: 'Бонньё',
+    link: './images/05-bonnieux.jpg'
+  },
+  {
+    name: 'Доломиты',
+    link: './images/06-dolomites.jpg'
+  },
+];
 
+let cardsLinks = document.querySelectorAll('.element__image');
+cardsLinks.forEach(function(item, index) {
+  item.src = initialCards[index].link;
+});
+
+let cardsNames = document.querySelectorAll('.element__name');
+cardsNames.forEach(function(item, index) {
+  item.textContent = initialCards[index].name;
+});
