@@ -37,12 +37,17 @@ cardsNames.forEach(function(item, index) {
 
 
 let popup = document.querySelector('.popup');
+let popupContainer = document.querySelectorAll('.popup__container');
 
 let profileName = document.querySelector('.profile__name');
 let profileAbout = document.querySelector('.profile__about');
 
 let editButton = document.querySelector('.profile__edit-button');
-let closeIcon = document.querySelector('.popup__close-icon');
+let addButton = document.querySelector('.profile__add-button');
+
+let closeIcons = document.querySelectorAll('.popup__close-icon');
+let closeIconEditContainer = closeIcons[0];
+let closeIconAddContainer = closeIcons[1];
 
 let popupForm = document.querySelector('.popup__form');
 
@@ -50,18 +55,33 @@ let popupInput = document.querySelectorAll('.popup__input');
 
 editButton.addEventListener('click', function () {
   popup.classList.add('popup_opened');
+  popupContainer[0].classList.add('popup__container_edit');
   popupInput[0].value = profileName.textContent;
   popupInput[1].value = profileAbout.textContent;
 })
 
-closeIcon.addEventListener('click', function () {
+closeIconEditContainer.addEventListener('click', function () {
   popup.classList.remove('popup_opened');
+  popupContainer[0].classList.remove('popup__container_edit');
 })
+
+addButton.addEventListener('click', function () {
+  popup.classList.add('popup_opened');
+  popupContainer[1].classList.add('popup__container_add');
+})
+
+closeIconAddContainer.addEventListener('click', function () {
+  popup.classList.remove('popup_opened');
+  popupContainer[1].classList.remove('popup__container_add');
+})
+
 
 function handleFormSubmit (event) {
   event.preventDefault();
   profileName.textContent = popupInput[0].value;
   profileAbout.textContent = popupInput[1].value;
+  popupContainer[0].classList.remove('popup__container_edit');
+  popupContainer[1].classList.remove('popup__container_add');
   popup.classList.remove('popup_opened');
 }
 
