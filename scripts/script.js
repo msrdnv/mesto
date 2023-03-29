@@ -28,12 +28,16 @@ const initialCards = [
 const gallery = document.querySelector('.gallery');
 const cardTemplate = document.querySelector('#element').content;
 
-initialCards.forEach(function(item) {
+function addCardPrepend(object) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  cardElement.querySelector('.element__image').src = item.link;
-  cardElement.querySelector('.element__name').textContent = item.name;
-  gallery.append(cardElement);
-});
+  cardElement.querySelector('.element__image').src = object.link;
+  cardElement.querySelector('.element__name').textContent = object.name;
+  gallery.prepend(cardElement);
+};
+
+for (let i = initialCards.length; i > 0; i--) {
+  addCardPrepend(initialCards[i-1]);
+}
 
 function openEditFormPopup() {
   popup.classList.add('popup_opened');
@@ -70,8 +74,8 @@ popup.append(popupEditFormContainer);
 const popupAddCardContainer = popupTemplate.querySelector('.popup__container').cloneNode(true);
 const popupAddCardCloseIcon = popupAddCardContainer.querySelector('.popup__close-icon');
 popupAddCardContainer.querySelector('.popup__title').textContent = 'Новое место';
-const popupAddForm = popupAddCardContainer.querySelector('.popup__form');
-popupAddForm.name = 'popup-add-form';
+const popupAddCardForm = popupAddCardContainer.querySelector('.popup__form');
+popupAddCardForm.name = 'popup-add-card-form';
 const popupAddInput = popupAddCardContainer.querySelectorAll('.popup__input');
 popupAddInput[0].name = 'input-card-name';
 popupAddInput[1].name = 'input-card-link';
@@ -103,10 +107,21 @@ popupEditFormCloseIcon.addEventListener('click', function() {
   closePopup();
 })
 
-function handleFormSubmit (event) {
+function submitEditForm (event) {
   event.preventDefault();
   profileName.textContent = popupEditInput[0].value;
   profileAbout.textContent = popupEditInput[1].value;
   closePopup();
 };
-popupEditForm.addEventListener('submit', handleFormSubmit);
+
+function submitAddCard (event) {
+  event.preventDefault();
+  const newCard = {
+    name: popupAddInput[0].value,
+    link: popupAddInput[1].value,
+  };
+  addCardPrepend(newCard);
+}
+
+popupEditForm.addEventListener('submit', submitEditForm);
+popupAddCardForm.addEventListener('submit', submitAddCard);
