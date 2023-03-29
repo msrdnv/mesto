@@ -11,25 +11,19 @@
 </head>
 <body class="page">
   <div class="popup">
-    <div class="popup__container">
-      <button class="popup__close-icon" type="button"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="popup-form-edit">
-        <input class="popup__input" name="input-name" type="text" placeholder="Имя">
-        <input class="popup__input" name="input-about" type="text" placeholder="О себе">
-        <button class="popup__submit-button" type="submit">Сохранить</button>
-      </form>
-    </div>
-    <div class="popup__container">
-      <button class="popup__close-icon" type="button"></button>
-      <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="popup-form-add">
-        <input class="popup__input" name="input-card-name" type="text" placeholder="Название">
-        <input class="popup__input" name="input-card-link" type="text" placeholder="Ссылка на картинку">
-        <button class="popup__submit-button" type="submit">Создать</button>
-      </form>
-    </div>
+    <template id="popup-container">
+      <div class="popup__container">
+        <button class="popup__close-icon" type="button"></button>
+        <h2 class="popup__title"></h2>
+        <form class="popup__form">
+          <input class="popup__input" type="text">
+          <input class="popup__input" type="text">
+          <button class="popup__submit-button" type="submit"></button>
+        </form>
+      </div>
+    </template>
   </div>
+
   <header class="header">
     <img class="header__logo" src="./images/logo-mesto-white.svg" alt="Логотип Mesto Russia">
   </header>
