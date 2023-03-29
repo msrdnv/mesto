@@ -121,6 +121,7 @@ function submitAddCard (event) {
     link: popupAddInput[1].value,
   };
   addCardPrepend(newCard);
+  closePopup();
 }
 
 popupEditForm.addEventListener('submit', submitEditForm);
