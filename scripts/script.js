@@ -25,14 +25,14 @@ const initialCards = [
   },
 ];
 
-let cardsLinks = document.querySelectorAll('.element__image');
-cardsLinks.forEach(function(item, index) {
-  item.src = initialCards[index].link;
-});
+const gallery = document.querySelector('.gallery');
+const cardTemplate = document.querySelector('#element').content;
 
-let cardsNames = document.querySelectorAll('.element__name');
-cardsNames.forEach(function(item, index) {
-  item.textContent = initialCards[index].name;
+initialCards.forEach(function(item) {
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  cardElement.querySelector('.element__image').src = item.link;
+  cardElement.querySelector('.element__name').textContent = item.name;
+  gallery.append(cardElement);
 });
 
 
