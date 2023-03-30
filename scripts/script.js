@@ -35,31 +35,39 @@ function addCardPrepend(object) {
   gallery.prepend(cardElement);
   handleLikeButton();
   handleDeleteButton();
+  handleFullImage();
 };
 
 for (let i = initialCards.length; i > 0; i--) {
   addCardPrepend(initialCards[i-1]);
 }
 
-function openEditNamePopup() {
+function openPopup() {
   popup.classList.add('popup_opened');
+}
+
+function openEditNamePopup() {
+  openPopup();
   popupEditNameContainer.classList.add('popup__container_opened');
 }
 
 function openAddCardPopup() {
   popupAddCardFormInput[0].value = null;
   popupAddCardFormInput[1].value = null;
-  popup.classList.add('popup_opened');
+  openPopup();
   popupAddCardContainer.classList.add('popup__container_opened');
 }
 
 function closePopup() {
   popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_dark');
   popupEditNameContainer.classList.remove('popup__container_opened');
   popupAddCardContainer.classList.remove('popup__container_opened');
+  fullImageWindow.classList.remove('popup__full-image-window_opened');
 }
 
 const popup = document.querySelector('.popup');
+const fullImageWindow = document.querySelector('.popup__full-image-window');
 const popupTemplate = document.querySelector('#popup-container').content;
 const popupAddCardContainer = popupTemplate.querySelector('.popup__container').cloneNode(true);
 const popupEditNameContainer = popupTemplate.querySelector('.popup__container').cloneNode(true);
@@ -142,4 +150,14 @@ function handleDeleteButton () {
   });
 };
 
+function handleFullImage () {
+  const cardImage = document.querySelector('.element__image');
+  cardImage.addEventListener('click', function () {
+    openPopup();
+    popup.classList.add('popup_dark');
+    fullImageWindow.classList.add('popup__full-image-window_opened');
+    popup.querySelector('.popup__full-image').src = cardImage.src;
+    popup.querySelector('.popup__full-image-caption').textContent = cardImage.nextElementSibling.textContent;
+  });
+};
 
