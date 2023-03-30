@@ -25,6 +25,25 @@ const initialCards = [
   },
 ];
 
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+
+const popup = document.querySelector('.popup');
+
+const popupContainer = document.querySelectorAll('.popup__container');
+const popupEditNameContainer = popupContainer[0];
+const popupAddCardContainer = popupContainer[1];
+
+const popupForm = document.querySelectorAll('.popup__form');
+const popupEditNameForm = popupForm[0];
+const popupAddCardForm = popupForm[1];
+
+const popupInput = document.querySelectorAll('.popup__input');
+const popupEditNameFormInput = [popupInput[0], popupInput[1]];
+const popupAddCardFormInput = [popupInput[2], popupInput[3]];
+
+const fullImageWindow = document.querySelector('.popup__full-image-window');
+
 const gallery = document.querySelector('.gallery');
 const cardTemplate = document.querySelector('#element').content;
 
@@ -65,41 +84,6 @@ function closePopup() {
   popupAddCardContainer.classList.remove('popup__container_opened');
   fullImageWindow.classList.remove('popup__full-image-window_opened');
 }
-
-const popup = document.querySelector('.popup');
-const fullImageWindow = document.querySelector('.popup__full-image-window');
-const popupTemplate = document.querySelector('#popup-container').content;
-const popupAddCardContainer = popupTemplate.querySelector('.popup__container').cloneNode(true);
-const popupEditNameContainer = popupTemplate.querySelector('.popup__container').cloneNode(true);
-
-popupEditNameContainer.querySelector('.popup__title').textContent = 'Редактировать профиль';
-popupEditNameContainer.querySelector('.popup__submit-button').textContent = 'Сохранить';
-
-const popupEditNameForm = popupEditNameContainer.querySelector('.popup__form');
-popupEditNameForm.name = 'popup-edit-name-form';
-
-const popupEditNameFormInput = popupEditNameContainer.querySelectorAll('.popup__input');
-popupEditNameFormInput[0].name = 'input-name';
-popupEditNameFormInput[1].name = 'input-about';
-popupEditNameFormInput[0].placeholder = 'Имя';
-popupEditNameFormInput[1].placeholder = 'О себе';
-popup.append(popupEditNameContainer);
-
-popupAddCardContainer.querySelector('.popup__title').textContent = 'Новое место';
-popupAddCardContainer.querySelector('.popup__submit-button').textContent = 'Создать';
-
-const popupAddCardForm = popupAddCardContainer.querySelector('.popup__form');
-popupAddCardForm.name = 'popup-add-card-form';
-
-const popupAddCardFormInput = popupAddCardContainer.querySelectorAll('.popup__input');
-popupAddCardFormInput[0].name = 'input-card-name';
-popupAddCardFormInput[1].name = 'input-card-link';
-popupAddCardFormInput[0].placeholder = 'Название';
-popupAddCardFormInput[1].placeholder = 'Ссылка на картинку';
-popup.append(popupAddCardContainer);
-
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
 
 const editButton = document.querySelector('.profile__edit-button');
 editButton.addEventListener('click', function () {
@@ -146,7 +130,7 @@ function handleLikeButton () {
 function handleDeleteButton () {
   const deleteButton = document.querySelector('.element__delete-button');
   deleteButton.addEventListener('click', function (event) {
-    event.target.parentNode.remove();
+    event.target.parentElement.remove();
   });
 };
 
