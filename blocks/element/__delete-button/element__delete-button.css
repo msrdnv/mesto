@@ -11,3 +11,7 @@
   background: url('../../../images/delete-button.svg') transparent no-repeat;
   background-size: contain;
 }
+
+.element__delete-button:hover {
+  opacity: 0.6;
+}
