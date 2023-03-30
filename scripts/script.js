@@ -28,13 +28,13 @@ const initialCards = [
 const gallery = document.querySelector('.gallery');
 const cardTemplate = document.querySelector('#element').content;
 
-
 function addCardPrepend(object) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   cardElement.querySelector('.element__image').src = object.link;
   cardElement.querySelector('.element__name').textContent = object.name;
   gallery.prepend(cardElement);
   handleLikeButton();
+  handleDeleteButton();
 };
 
 for (let i = initialCards.length; i > 0; i--) {
@@ -134,3 +134,12 @@ function handleLikeButton () {
     event.target.classList.toggle('element__like-button_activated');
   });
 };
+
+function handleDeleteButton () {
+  const deleteButton = document.querySelector('.element__delete-button');
+  deleteButton.addEventListener('click', function (event) {
+    event.target.parentNode.remove();
+  });
+};
+
+

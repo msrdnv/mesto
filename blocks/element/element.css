@@ -6,6 +6,6 @@
   border-radius: 10px;
   display: grid;
   grid-template-areas:
-  "element-image element-image"
+  "element-image-delete-button element-image-delete-button"
   "element-text like-button";
 }
