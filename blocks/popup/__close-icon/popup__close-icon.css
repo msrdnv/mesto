@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   border: none;
-  position: relative;
+  position: absolute;
   width: 32px;
   height: 32px;
-  left: 438px;
-  bottom: 40px;
+  left: calc(100% + 8px);
+  bottom: calc(100% + 8px);
   cursor: pointer;
   background: url(../../../images/close-icon.svg) transparent no-repeat;
   background-size: contain;
@@ -20,7 +20,7 @@
   .popup__close-icon {
     width: 20px;
     height: 20px;
-    left: 262px;
-    bottom: 36px;
+    left: calc(100% - 20px);
+    bottom: calc(100% + 16px);
   }
 }

@@ -1,4 +1,5 @@
 .popup__full-image-window {
+  position: relative;
   margin: auto;
   display: none;
   flex-direction: column;
