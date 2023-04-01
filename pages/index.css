@@ -7,18 +7,17 @@
 @import url(../blocks/fade-in/fade-in.css);
 @import url(../blocks/fade-out/fade-out.css);
 
-@import url(../blocks/element-opened/element-opened.css);
-
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_dark/popup_dark.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_type/_dark/popup_type_dark.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
-@import url(../blocks/popup/__full-image-window/popup__full-image-window.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
 @import url(../blocks/popup/__full-image/popup__full-image.css);
-@import url(../blocks/popup/__full-image-caption/popup__full-image-caption.css);
+@import url(../blocks/popup/__image-caption/popup__image-caption.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);

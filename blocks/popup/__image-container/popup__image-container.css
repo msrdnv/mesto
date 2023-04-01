@@ -1,7 +1,7 @@
-.popup__full-image-window {
+.popup__image-container {
   position: relative;
   margin: auto;
-  display: none;
+  display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
