@@ -1,3 +1,5 @@
+const popups = document.querySelectorAll('.popup');
+
 const imagePopup = document.querySelector('.image-popup');
 const profilePopup = document.querySelector('.profile-popup');
 const cardPopup = document.querySelector('.card-popup');
@@ -137,3 +139,20 @@ function submitCardForm (event) {
 
 profileForm.addEventListener('submit', submitProfileForm);
 cardForm.addEventListener('submit', submitCardForm);
+
+
+document.addEventListener('keyup', function (event) {
+  popups.forEach(function (item) {
+    if (item.classList.contains('popup_opened') && event.key === 'Escape') {
+      closePopup(item);
+    };
+  });
+});
+
+document.addEventListener('click', function (event) {
+  popups.forEach(function (item) {
+    if (item.classList.contains('popup_opened') && event.target === item) {
+      closePopup(item);
+    };
+  });
+});
