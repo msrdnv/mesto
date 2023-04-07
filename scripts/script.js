@@ -48,26 +48,44 @@ const initialCards = [
   },
 ];
 
-for (let i = initialCards.length; i > 0; i--) {
-  addCardPrepend(initialCards[i-1]);
+function popupIsOpened (item) {
+  return item.classList.contains('popup_opened');
 };
 
-function addCardPrepend(item) {
-  const card = createCard(item);
-  gallery.prepend(card);
+function addEscButtonListener () {
+  document.addEventListener('keyup', handleEscButton);
 };
 
-function createCard(item) {
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  const cardImage = cardElement.querySelector('.element__image');
-  cardElement.querySelector('.element__name').textContent = item.name;
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  handleLikeButton(cardElement);
-  handleDeleteButton(cardElement);
-  handleFullImage(cardImage);
-  return cardElement;
+
+function removeEscButtonListener () {
+  document.removeEventListener('keyup', handleEscButton);
+};
+
+function openPopup(item) {
+  item.classList.add('popup_opened');
 }
+
+function closePopup(item) {
+  item.classList.remove('popup_opened');
+}
+
+document.addEventListener('click', function (event) {
+  popups.forEach(function (item) {
+    if (popupIsOpened(item) && event.target === item) {
+      closePopup(item);
+      removeEscButtonListener();
+    };
+  });
+});
+
+function handleEscButton (event) {
+  popups.forEach(function (item) {
+    if (popupIsOpened(item) && event.key === 'Escape') {
+      closePopup(item);
+      removeEscButtonListener();
+    };
+  });
+};
 
 function handleLikeButton (item) {
   const likeButton = item.querySelector('.element__like-button');
@@ -86,36 +104,53 @@ function handleDeleteButton (item) {
 function handleFullImage (item) {
   item.addEventListener('click', function () {
     openPopup(imagePopup);
+    addEscButtonListener();
     fullImage.src = item.src;
     fullImage.alt = item.alt;
     imageCaption.textContent = item.nextElementSibling.textContent;
   });
 };
 
-function openPopup(item) {
-  item.classList.add('popup_opened');
+function createCard(item) {
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const cardImage = cardElement.querySelector('.element__image');
+  cardElement.querySelector('.element__name').textContent = item.name;
+  cardImage.src = item.link;
+  cardImage.alt = item.name;
+  handleLikeButton(cardElement);
+  handleDeleteButton(cardElement);
+  handleFullImage(cardImage);
+  return cardElement;
 }
 
-function closePopup(item) {
-  item.classList.remove('popup_opened');
-}
+function addCardPrepend(item) {
+  const card = createCard(item);
+  gallery.prepend(card);
+};
+
+for (let i = initialCards.length; i > 0; i--) {
+  addCardPrepend(initialCards[i-1]);
+};
 
 const editButton = document.querySelector('.profile__edit-button');
 editButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
+  addEscButtonListener();
 });
 
 const addButton = document.querySelector('.profile__add-button');
 addButton.addEventListener('click', function () {
   openPopup(cardPopup);
+  addEscButtonListener();
 });
 
 const closeIcons = document.querySelectorAll('.popup__close-icon');
 closeIcons.forEach(function (item) {
   item.addEventListener('click', function () {
     closePopup(item.closest('.popup'));
+    removeEscButtonListener();
   });
 });
 
@@ -124,6 +159,7 @@ function submitProfileForm (event) {
   profileName.textContent = nameInput.value;
   profileAbout.textContent = aboutInput.value;
   closePopup(profilePopup);
+  removeEscButtonListener();
 };
 
 function submitCardForm (event) {
@@ -135,29 +171,8 @@ function submitCardForm (event) {
   addCardPrepend(newCard);
   event.target.reset();
   closePopup(cardPopup);
+  removeEscButtonListener();
 };
 
 profileForm.addEventListener('submit', submitProfileForm);
 cardForm.addEventListener('submit', submitCardForm);
-
-function popupIsOpened (item) {
-  return item.classList.contains('popup_opened');
-}
-
-document.addEventListener('keyup', function (event) {
-  popups.forEach(function (item) {
-    if (popupIsOpened(item) && event.key === 'Escape') {
-      closePopup(item);
-    };
-  });
-});
-
-document.addEventListener('click', function (event) {
-  popups.forEach(function (item) {
-    if (popupIsOpened(item) && event.target === item) {
-      closePopup(item);
-    };
-  });
-});
-
-
