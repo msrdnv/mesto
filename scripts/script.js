@@ -140,10 +140,13 @@ function submitCardForm (event) {
 profileForm.addEventListener('submit', submitProfileForm);
 cardForm.addEventListener('submit', submitCardForm);
 
+function popupIsOpened (item) {
+  return item.classList.contains('popup_opened');
+}
 
 document.addEventListener('keyup', function (event) {
   popups.forEach(function (item) {
-    if (item.classList.contains('popup_opened') && event.key === 'Escape') {
+    if (popupIsOpened(item) && event.key === 'Escape') {
       closePopup(item);
     };
   });
@@ -151,8 +154,10 @@ document.addEventListener('keyup', function (event) {
 
 document.addEventListener('click', function (event) {
   popups.forEach(function (item) {
-    if (item.classList.contains('popup_opened') && event.target === item) {
+    if (popupIsOpened(item) && event.target === item) {
       closePopup(item);
     };
   });
 });
+
+
