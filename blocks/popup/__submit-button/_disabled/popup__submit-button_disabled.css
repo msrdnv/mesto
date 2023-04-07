@@ -1,0 +1,5 @@
+.popup__submit-button_disabled {
+  background: url(../../../../images/submit-button-disabled.svg) transparent no-repeat;
+  background-size: cover;
+  color: #C4C4C4;
+}
