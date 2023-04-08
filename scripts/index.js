@@ -13,6 +13,9 @@ const profileAbout = document.querySelector('.profile__about');
 const profileForm = document.forms['profile-form'];
 const cardForm = document.forms['card-form'];
 
+const profileFormSubmitButton = profileForm.querySelector('.popup__submit-button');
+const cardFormSubmitButton = cardForm.querySelector('.popup__submit-button');
+
 const nameInput = profileForm.elements['name'];
 const aboutInput = profileForm.elements['about'];
 const cardNameInput = cardForm.elements['card-name'];
@@ -140,7 +143,7 @@ editButton.addEventListener('click', function () {
   addEscButtonListener();
   isValid(profileForm, nameInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
   isValid(profileForm, aboutInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
-  disableSubmitButton(profileForm.querySelector('.popup__submit-button'), {inactiveButtonClass: 'popup__submit-button_disabled'});
+  toggleButtonState(Array.from(profileForm.querySelectorAll('.popup__input')), profileFormSubmitButton, {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const addButton = document.querySelector('.profile__add-button');
@@ -149,7 +152,7 @@ addButton.addEventListener('click', function () {
   addEscButtonListener();
   isValid(cardForm, cardNameInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
   isValid(cardForm, cardLinkInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
-  disableSubmitButton(cardForm.querySelector('.popup__submit-button'), {inactiveButtonClass: 'popup__submit-button_disabled'});
+  toggleButtonState(Array.from(cardForm.querySelectorAll('.popup__input')), cardFormSubmitButton, {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const closeIcons = document.querySelectorAll('.popup__close-icon');

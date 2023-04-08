@@ -27,14 +27,10 @@ function hasInvalidInput (inputList) {
   });
 };
 
-function disableSubmitButton (submitButtonElement, objClassList) {
-  submitButtonElement.setAttribute('disabled', '');
-  submitButtonElement.classList.add(objClassList.inactiveButtonClass);
-};
-
 function toggleButtonState (inputList, submitButtonElement, objClassList) {
   if (hasInvalidInput(inputList)) {
-    disableSubmitButton(submitButtonElement, objClassList);
+    submitButtonElement.classList.add(objClassList.inactiveButtonClass);
+    submitButtonElement.setAttribute('disabled', '');
   }
   else {
     submitButtonElement.classList.remove(objClassList.inactiveButtonClass);
