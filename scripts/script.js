@@ -138,12 +138,14 @@ editButton.addEventListener('click', function () {
   aboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
   addEscButtonListener();
+  disableSubmitButton(profileForm.querySelector('.popup__submit-button'), {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const addButton = document.querySelector('.profile__add-button');
 addButton.addEventListener('click', function () {
   openPopup(cardPopup);
   addEscButtonListener();
+  disableSubmitButton(cardForm.querySelector('.popup__submit-button'), {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const closeIcons = document.querySelectorAll('.popup__close-icon');

@@ -1,5 +1,11 @@
 .popup__submit-button_disabled {
   background: url(../../../../images/submit-button-disabled.svg) transparent no-repeat;
-  background-size: cover;
+  background-size: 358px 50px;
   color: #C4C4C4;
+}
+
+@media screen and (max-width: 635px) {
+  .popup__submit-button_disabled {
+    background-size: 238px 46px;
+  }
 }
