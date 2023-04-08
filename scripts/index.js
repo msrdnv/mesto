@@ -138,6 +138,8 @@ editButton.addEventListener('click', function () {
   aboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
   addEscButtonListener();
+  isValid(profileForm, nameInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
+  isValid(profileForm, aboutInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
   disableSubmitButton(profileForm.querySelector('.popup__submit-button'), {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
@@ -145,6 +147,8 @@ const addButton = document.querySelector('.profile__add-button');
 addButton.addEventListener('click', function () {
   openPopup(cardPopup);
   addEscButtonListener();
+  isValid(cardForm, cardNameInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
+  isValid(cardForm, cardLinkInput, {inputErrorClass: 'popup__input_type_error', errorClass: 'popup__error_visible'});
   disableSubmitButton(cardForm.querySelector('.popup__submit-button'), {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
