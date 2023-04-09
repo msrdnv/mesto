@@ -2,6 +2,7 @@
   background: url(../../../../images/submit-button-disabled.svg) transparent no-repeat;
   background-size: 358px 50px;
   color: #C4C4C4;
+  cursor: default;
 }
 
 @media screen and (max-width: 635px) {

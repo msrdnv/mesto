@@ -13,7 +13,7 @@
   line-height: 1.21;
   }
 
-.popup__submit-button:hover {
+.popup__submit-button:hover:not(.popup__submit-button_disabled) {
   opacity: 0.8;
 }
 
