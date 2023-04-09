@@ -72,7 +72,7 @@ function closeByEsc(event) {
 
 function closeByClick(event) {
   const openedPopup = document.querySelector('.popup_opened');
-  if (event.target === document.querySelector('.popup_opened')) {
+  if (event.target === openedPopup) {
     closePopup(openedPopup);
   };
 };
