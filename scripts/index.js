@@ -72,7 +72,7 @@ function closeByEsc(event) {
 
 function closeByClick(event) {
   const openedPopup = document.querySelector('.popup_opened');
-  if (event.target === openedPopup) {
+  if (event.target === document.querySelector('.popup_opened')) {
     closePopup(openedPopup);
   };
 };
@@ -126,13 +126,11 @@ editButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
-  toggleButtonState(Array.from(profileForm.querySelectorAll('.popup__input')), profileFormSubmitButton, {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const addButton = document.querySelector('.profile__add-button');
 addButton.addEventListener('click', function () {
   openPopup(cardPopup);
-  toggleButtonState(Array.from(cardForm.querySelectorAll('.popup__input')), cardFormSubmitButton, {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const closeIcons = document.querySelectorAll('.popup__close-icon');
