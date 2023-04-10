@@ -54,13 +54,11 @@ const initialCards = [
 function openPopup(item) {
   item.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
-  item.addEventListener('click', closeByClick);
 };
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEsc);
-  item.removeEventListener('click', closeByClick);
 };
 
 function closeByEsc(event) {
@@ -71,11 +69,14 @@ function closeByEsc(event) {
 };
 
 function closeByClick(event) {
-  const openedPopup = document.querySelector('.popup_opened');
-  if (event.target === openedPopup) {
-    closePopup(openedPopup);
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
   };
 };
+
+popups.forEach(function (item) {
+  item.addEventListener('click', closeByClick);
+});
 
 function handleLikeButton (item) {
   const likeButton = item.querySelector('.element__like-button');
@@ -126,11 +127,13 @@ editButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
+  toggleButtonState(Array.from(profileForm.querySelectorAll('.popup__input')), profileFormSubmitButton, {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const addButton = document.querySelector('.profile__add-button');
 addButton.addEventListener('click', function () {
   openPopup(cardPopup);
+  toggleButtonState(Array.from(cardForm.querySelectorAll('.popup__input')), cardFormSubmitButton, {inactiveButtonClass: 'popup__submit-button_disabled'});
 });
 
 const closeIcons = document.querySelectorAll('.popup__close-icon');
