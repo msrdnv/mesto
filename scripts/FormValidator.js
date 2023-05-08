@@ -27,7 +27,7 @@ function hasInvalidInput (inputList) {
   });
 };
 
-function toggleButtonState (inputList, submitButtonElement, objClassList) {
+export function toggleButtonState (inputList, submitButtonElement, objClassList) {
   if (hasInvalidInput(inputList)) {
     submitButtonElement.classList.add(objClassList.inactiveButtonClass);
     submitButtonElement.setAttribute('disabled', '');

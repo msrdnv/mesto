@@ -1,9 +1,14 @@
+import { Card } from './Card.js';
+import { toggleButtonState } from './FormValidator.js';
+
+export { imagePopup, fullImage, imageCaption, openPopup};
+
 const popups = document.querySelectorAll('.popup');
 
-const imagePopup = document.querySelector('.image-popup');
 const profilePopup = document.querySelector('.profile-popup');
 const cardPopup = document.querySelector('.card-popup');
 
+const imagePopup = document.querySelector('.image-popup');
 const fullImage = document.querySelector('.popup__full-image');
 const imageCaption = document.querySelector('.popup__image-caption');
 
@@ -22,7 +27,7 @@ const cardNameInput = cardForm.elements['card-name'];
 const cardLinkInput = cardForm.elements['card-link'];
 
 const gallery = document.querySelector('.gallery');
-const cardTemplate = document.querySelector('#element').content;
+/* const cardTemplate = document.querySelector('.element-template'); */
 
 const initialCards = [
   {
@@ -51,6 +56,16 @@ const initialCards = [
   },
 ];
 
+function addCardPrepend(item) {
+  const card = new Card(item, '.element-template');
+  const cardElement = card.generateCard();
+  gallery.prepend(cardElement);
+};
+
+for (let i = initialCards.length; i > 0; i--) {
+  addCardPrepend(initialCards[i-1]);
+};
+
 function openPopup(item) {
   item.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
@@ -78,30 +93,30 @@ popups.forEach(function (item) {
   item.addEventListener('click', closeByClick);
 });
 
-function handleLikeButton (item) {
+/* function handleLikeButton (item) {
   const likeButton = item.querySelector('.element__like-button');
   likeButton.addEventListener('click', function (event) {
     event.target.classList.toggle('element__like-button_activated');
   });
-};
+}; */
 
-function handleDeleteButton (item) {
+/* function handleDeleteButton (item) {
   const deleteButton = item.querySelector('.element__delete-button');
   deleteButton.addEventListener('click', function (event) {
     event.target.closest('.element').remove();
   });
-};
+}; */
 
-function handleFullImage (item) {
+/* function handleFullImage (item) {
   item.addEventListener('click', function () {
     openPopup(imagePopup);
     fullImage.src = item.src;
     fullImage.alt = item.alt;
     imageCaption.textContent = item.nextElementSibling.textContent;
   });
-};
+}; */
 
-function createCard(item) {
+/* function createCard(item) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
   cardElement.querySelector('.element__name').textContent = item.name;
@@ -111,16 +126,7 @@ function createCard(item) {
   handleDeleteButton(cardElement);
   handleFullImage(cardImage);
   return cardElement;
-}
-
-function addCardPrepend(item) {
-  const card = createCard(item);
-  gallery.prepend(card);
-};
-
-for (let i = initialCards.length; i > 0; i--) {
-  addCardPrepend(initialCards[i-1]);
-};
+} */
 
 const editButton = document.querySelector('.profile__edit-button');
 editButton.addEventListener('click', function () {
