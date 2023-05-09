@@ -1,16 +1,12 @@
+import { openPopup, closePopup } from '../utils/utils.js';
+import { initialCards } from '../utils/constants.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-
-export { imagePopup, fullImage, imageCaption, openPopup, toggleButtonState };
 
 const popups = document.querySelectorAll('.popup');
 
 const profilePopup = document.querySelector('.profile-popup');
 const cardPopup = document.querySelector('.card-popup');
-const imagePopup = document.querySelector('.image-popup');
-
-const fullImage = document.querySelector('.popup__full-image');
-const imageCaption = document.querySelector('.popup__image-caption');
 
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
@@ -21,12 +17,6 @@ const closeIcons = document.querySelectorAll('.popup__close-icon');
 
 const profileForm = document.forms['profile-form'];
 const cardForm = document.forms['card-form'];
-
-const profileFormInputs = Array.from(profileForm.querySelectorAll('.popup__input'));
-const profileFormSubmitButton = profileForm.querySelector('.popup__submit-button');
-
-const cardFormInputs = Array.from(cardForm.querySelectorAll('.popup__input'));
-const cardFormSubmitButton = cardForm.querySelector('.popup__submit-button');
 
 const nameInput = profileForm.elements['name'];
 const aboutInput = profileForm.elements['about'];
@@ -46,33 +36,6 @@ const formSelectors = {
 const cardFormValidator = new FormValidator(formSelectors, cardForm);
 const profileFormValidator = new FormValidator(formSelectors, profileForm);
 
-const initialCards = [
-  {
-    name: 'Кронплатц',
-    link: './images/01-kronplatz.jpg'
-  },
-  {
-    name: 'Экрен',
-    link: './images/02-ecrins.jpg'
-  },
-  {
-    name: 'Солт-Лейк-Сити',
-    link: './images/03-salt_lake.jpg'
-  },
-  {
-    name: 'Сиуатанехо',
-    link: './images/04-zihuatanejo.jpg'
-  },
-  {
-    name: 'Бонньё',
-    link: './images/05-bonnieux.jpg'
-  },
-  {
-    name: 'Доломиты',
-    link: './images/06-dolomites.jpg'
-  },
-];
-
 function addCardPrepend(item) {
   const card = new Card(item, '.element-template');
   const cardElement = card.generateCard();
@@ -81,23 +44,6 @@ function addCardPrepend(item) {
 
 for (let i = initialCards.length; i > 0; i--) {
   addCardPrepend(initialCards[i-1]);
-};
-
-function openPopup(item) {
-  item.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEsc);
-};
-
-function closePopup(item) {
-  item.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEsc);
-};
-
-function closeByEsc(event) {
-  if (event.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  };
 };
 
 function closeByClick(event) {
@@ -110,23 +56,6 @@ popups.forEach((item) => {
   item.addEventListener('click', closeByClick);
 });
 
-function hasInvalidInput (inputsList) {
-  return inputsList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-
-function toggleButtonState (inputsList, submitButtonElement, inactiveButtonClass) {
-  if (hasInvalidInput(inputsList)) {
-    submitButtonElement.classList.add(inactiveButtonClass);
-    submitButtonElement.setAttribute('disabled', '');
-  }
-  else {
-    submitButtonElement.classList.remove(inactiveButtonClass);
-    submitButtonElement.removeAttribute('disabled', '');
-  };
-};
-
 cardFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 
@@ -134,12 +63,12 @@ editButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
-  toggleButtonState(profileFormInputs, profileFormSubmitButton, 'popup__submit-button_disabled');
+  profileFormValidator.toggleButtonState('popup__submit-button_disabled');
 });
 
 addButton.addEventListener('click', () => {
   openPopup(cardPopup);
-  toggleButtonState(cardFormInputs, cardFormSubmitButton, 'popup__submit-button_disabled');
+  cardFormValidator.toggleButtonState('popup__submit-button_disabled');
 });
 
 closeIcons.forEach((item) => {
