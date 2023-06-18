@@ -7,7 +7,6 @@
   <meta name="keywords" content="Mesto, Russia, места, красоты, природа, атмосфера, интерактив, фотографии, лайки, javascript, HTML, CSS">
   <meta name="author" content="Михаил Середнев">
   <title>сервис Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <div class="popup popup_type_dark image-popup">
@@ -45,13 +44,13 @@
   </div>
 
   <header class="header">
-    <img class="header__logo" src="./images/logo-mesto-white.svg" alt="Логотип Mesto Russia">
+    <img class="header__logo" src="<%=require('./images/logo-mesto-white.svg')%>" alt="Логотип Mesto Russia">
   </header>
 
   <main class="content">
     <section class="profile">
       <div class="profile__info">
-        <img class="profile__avatar" src="./images/kusto.png" alt="Аватар профиля">
+        <img class="profile__avatar" src="<%=require('./images/kusto.png')%>" alt="Аватар профиля">
         <div class="profile__text-data">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>
@@ -76,10 +75,5 @@
   <footer class="footer">
     <p class="footer__text">&copy; 2023 Mesto Russia</p>
   </footer>
-  <script type="module" src="./scripts/index.js"></script>
-  <script type="module" src="./scripts/Card.js"></script>
-  <script type="module" src="./scripts/FormValidator.js"></script>
-  <script type="module" src="./utils/constants.js"></script>
-  <script type="module" src="./utils/utils.js"></script>
 </body>
 </html>
