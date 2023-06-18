@@ -3,6 +3,7 @@ import { openPopup, closePopup } from '../utils/utils.js';
 import { initialCards } from '../utils/constants.js';
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
 
 const popups = document.querySelectorAll('.popup');
 
@@ -24,8 +25,6 @@ const aboutInput = profileForm.elements['about'];
 const cardNameInput = cardForm.elements['card-name'];
 const cardLinkInput = cardForm.elements['card-link'];
 
-const gallery = document.querySelector('.gallery');
-
 const formSelectors = {
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-button',
@@ -37,15 +36,19 @@ const formSelectors = {
 const cardFormValidator = new FormValidator(formSelectors, cardForm);
 const profileFormValidator = new FormValidator(formSelectors, profileForm);
 
-function addCardPrepend(item) {
-  const card = new Card(item, '.element-template');
-  const cardElement = card.generateCard();
-  gallery.prepend(cardElement);
-};
 
-for (let i = initialCards.length; i > 0; i--) {
-  addCardPrepend(initialCards[i-1]);
-};
+const cardList = new Section ({
+  items: initialCards,
+  renderer: (cardItem) => {
+    const card = new Card(cardItem, '.element-template');
+    const cardElement = card.generateCard();
+    cardList.addItem(cardElement);
+  }
+},
+  '.gallery'
+);
+
+cardList.renderItems();
 
 function closeByClick(event) {
   if (event.target === event.currentTarget) {
@@ -87,11 +90,13 @@ function submitProfileForm (event) {
 
 function submitCardForm (event) {
   event.preventDefault();
-  const newCard = {
+  const newCardData = {
     name: cardNameInput.value,
     link: cardLinkInput.value,
   };
-  addCardPrepend(newCard);
+  const newCard = new Card(newCardData, '.element-template');
+  const newCardElement = newCard.generateCard();
+  cardList.addItem(newCardElement);
   event.target.reset();
   closePopup(cardPopup);
 };
