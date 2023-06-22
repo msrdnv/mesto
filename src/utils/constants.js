@@ -12,6 +12,14 @@ export const addButton = document.querySelector('.profile__add-button');
 export const fullImage = document.querySelector('.popup__full-image');
 export const imageCaption = document.querySelector('.popup__image-caption');
 
+export const formSelectors = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
 const imageKronplatz = new URL('../images/01-kronplatz.jpg', import.meta.url);
 const imageEcrins = new URL('../images/02-ecrins.jpg', import.meta.url);
 const imageSaltLake = new URL('../images/03-salt_lake.jpg', import.meta.url);

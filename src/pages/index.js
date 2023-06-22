@@ -1,6 +1,6 @@
 import './index.css';
 
-import { profileForm, cardForm, nameInput, aboutInput, cardNameInput, cardLinkInput, editButton, addButton, initialCards } from '../utils/constants.js';
+import { profileForm, cardForm, nameInput, aboutInput, cardNameInput, cardLinkInput, editButton, addButton, formSelectors, initialCards } from '../utils/constants.js';
 import { handleCardClick } from '../utils/utils.js';
 
 import { Card } from '../components/Card.js';
@@ -11,14 +11,6 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 
 const userInfo = new UserInfo({nameSelector : '.profile__name', aboutSelector : '.profile__about'});
-
-const formSelectors = {
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
 
 const cardFormValidator = new FormValidator(formSelectors, cardForm);
 const profileFormValidator = new FormValidator(formSelectors, profileForm);
