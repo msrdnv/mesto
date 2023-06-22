@@ -1,11 +1,9 @@
-import { imagePopup, fullImage, imageCaption} from '../utils/constants.js';
-import { openPopup } from '../utils/utils.js';
-
 export class Card {
-  constructor({name, link}, templateSelector) {
+  constructor({name, link}, templateSelector, handleCardClick ) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   };
 
   _getTemplate() {
@@ -19,7 +17,7 @@ export class Card {
 
   _setEventListeners () {
     this._handleDeleteButton();
-    this._handleFullImage();
+    this._handleCardClick(this._elementImage);
     this._handleLikeButton();
   };
 
@@ -27,15 +25,6 @@ export class Card {
     const deleteButton = this._element.querySelector('.element__delete-button');
     deleteButton.addEventListener('click', (event) => {
       event.target.closest('.element').remove();
-    });
-  };
-
-  _handleFullImage () {
-    this._elementImage.addEventListener('click', () => {
-      openPopup(imagePopup);
-      fullImage.src = this._elementImage.src;
-      fullImage.alt = this._elementImage.alt;
-      imageCaption.textContent = this._elementImage.nextElementSibling.textContent;
     });
   };
 
