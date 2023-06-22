@@ -1,5 +1,10 @@
-export const profileName = document.querySelector('.profile__name');
-export const profileAbout = document.querySelector('.profile__about');
+export const profileForm = document.forms['profile-form'];
+export const cardForm = document.forms['card-form'];
+
+export const nameInput = profileForm.elements['name'];
+export const aboutInput = profileForm.elements['about'];
+export const cardNameInput = cardForm.elements['card-name'];
+export const cardLinkInput = cardForm.elements['card-link'];
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');

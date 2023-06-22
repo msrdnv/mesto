@@ -1,21 +1,16 @@
 import './index.css';
 
-import { profileName, profileAbout, editButton, addButton, initialCards } from '../utils/constants.js';
-import { handleCardClick } from '../utils/utils';
+import { profileForm, cardForm, nameInput, aboutInput, cardNameInput, cardLinkInput, editButton, addButton, initialCards } from '../utils/constants.js';
+import { handleCardClick } from '../utils/utils.js';
 
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 
-const profileForm = document.forms['profile-form'];
-const cardForm = document.forms['card-form'];
-
-const nameInput = profileForm.elements['name'];
-const aboutInput = profileForm.elements['about'];
-const cardNameInput = cardForm.elements['card-name'];
-const cardLinkInput = cardForm.elements['card-link'];
+const userInfo = new UserInfo({nameSelector : '.profile__name', aboutSelector : '.profile__about'});
 
 const formSelectors = {
   inputSelector: '.popup__input',
@@ -46,8 +41,7 @@ cardList.renderItems();
 
 const submitProfileForm = (evt) => {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileAbout.textContent = aboutInput.value;
+  userInfo.setUserInfo();
   profilePopup.close();
 };
 
@@ -72,8 +66,8 @@ export const imagePopup = new PopupWithImage('.image-popup');
 imagePopup.setEventListeners();
 
 editButton.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  aboutInput.value = profileAbout.textContent;
+  nameInput.value = userInfo.getUserInfo().name;
+  aboutInput.value = userInfo.getUserInfo().about;
   profilePopup.open();
   profileFormValidator.toggleButtonState('popup__submit-button_disabled');
 });
