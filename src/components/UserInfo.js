@@ -1,5 +1,3 @@
-import { nameInput, aboutInput } from "../utils/constants.js";
-
 export class UserInfo {
   constructor ({ nameSelector, aboutSelector }) {
     this._name = document.querySelector(nameSelector);
@@ -13,9 +11,8 @@ export class UserInfo {
     return this._formValues;
   };
 
-  setUserInfo() {
-    this._formValues = {name: nameInput.value, about: aboutInput.value};
-    this._name.textContent = this._formValues.name;
-    this._about.textContent = this._formValues.about;
+  setUserInfo(name, about) {
+    this._name.textContent = name;
+    this._about.textContent = about;
   };
 }

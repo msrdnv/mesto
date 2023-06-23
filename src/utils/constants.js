@@ -3,11 +3,9 @@ export const cardForm = document.forms['card-form'];
 
 export const nameInput = profileForm.elements['name'];
 export const aboutInput = profileForm.elements['about'];
-export const cardNameInput = cardForm.elements['card-name'];
-export const cardLinkInput = cardForm.elements['card-link'];
 
-export const editButton = document.querySelector('.profile__edit-button');
-export const addButton = document.querySelector('.profile__add-button');
+export const profilePopupOpenButton = document.querySelector('.profile__edit-button');
+export const cardPopupOpenButton = document.querySelector('.profile__add-button');
 
 export const fullImage = document.querySelector('.popup__full-image');
 export const imageCaption = document.querySelector('.popup__image-caption');
@@ -29,27 +27,27 @@ const imageDolomites = new URL('../images/06-dolomites.jpg', import.meta.url);
 
 export const initialCards = [
   {
-    name: 'Кронплатц',
+    description: 'Кронплатц',
     link: imageKronplatz
   },
   {
-    name: 'Экрен',
+    description: 'Экрен',
     link: imageEcrins
   },
   {
-    name: 'Солт-Лейк-Сити',
+    description: 'Солт-Лейк-Сити',
     link: imageSaltLake
   },
   {
-    name: 'Сиуатанехо',
+    description: 'Сиуатанехо',
     link: imageZihuatanejo
   },
   {
-    name: 'Бонньё',
+    description: 'Бонньё',
     link: imageBonnieux
   },
   {
-    name: 'Доломиты',
+    description: 'Доломиты',
     link: imageDolomites
   },
 ];

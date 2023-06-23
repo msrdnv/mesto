@@ -1,6 +1,6 @@
 import './index.css';
 
-import { profileForm, cardForm, nameInput, aboutInput, cardNameInput, cardLinkInput, editButton, addButton, formSelectors, initialCards } from '../utils/constants.js';
+import { profileForm, cardForm, nameInput, aboutInput, profilePopupOpenButton, cardPopupOpenButton, formSelectors, initialCards } from '../utils/constants.js';
 import { handleCardClick } from '../utils/utils.js';
 
 import { Card } from '../components/Card.js';
@@ -18,34 +18,32 @@ const profileFormValidator = new FormValidator(formSelectors, profileForm);
 cardFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 
+const createCard = (cardData) => {
+  const card = new Card(cardData, '.element-template', handleCardClick);
+  const cardElement = card.generateCard();
+  cardList.addItem(cardElement);
+}
+
 const cardList = new Section ({
   items: initialCards,
-  renderer: (cardItem) => {
-    const card = new Card(cardItem, '.element-template', handleCardClick);
-    const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
-  }
+  renderer: (cardData) => {
+    createCard(cardData);
+  },
 },
   '.gallery'
 );
 
 cardList.renderItems();
 
-const submitProfileForm = (evt) => {
+const submitProfileForm = (evt, inputValues) => {
   evt.preventDefault();
-  userInfo.setUserInfo();
+  userInfo.setUserInfo(inputValues.name, inputValues.about);
   profilePopup.close();
 };
 
-const submitCardForm = (evt) => {
+const submitCardForm = (evt, inputValues) => {
   evt.preventDefault();
-  const newCardData = {
-    name: cardNameInput.value,
-    link: cardLinkInput.value,
-  };
-  const newCard = new Card(newCardData, '.element-template', handleCardClick);
-  const newCardElement = newCard.generateCard();
-  cardList.addItem(newCardElement);
+  createCard(inputValues);
   evt.target.reset();
   cardPopup.close();
 };
@@ -57,14 +55,14 @@ cardPopup.setEventListeners();
 export const imagePopup = new PopupWithImage('.image-popup');
 imagePopup.setEventListeners();
 
-editButton.addEventListener('click', () => {
+profilePopupOpenButton.addEventListener('click', () => {
   nameInput.value = userInfo.getUserInfo().name;
   aboutInput.value = userInfo.getUserInfo().about;
   profilePopup.open();
-  profileFormValidator.toggleButtonState('popup__submit-button_disabled');
+  profileFormValidator.toggleButtonState();
 });
 
-addButton.addEventListener('click', () => {
+cardPopupOpenButton.addEventListener('click', () => {
   cardPopup.open();
-  cardFormValidator.toggleButtonState('popup__submit-button_disabled');
+  cardFormValidator.toggleButtonState();
 });
