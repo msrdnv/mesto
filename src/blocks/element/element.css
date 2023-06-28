@@ -7,5 +7,5 @@
   display: grid;
   grid-template-areas:
   "element-image-delete-button element-image-delete-button"
-  "element-text like-button";
+  "element-name element-like-container";
 }
