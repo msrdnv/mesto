@@ -43,6 +43,7 @@ export class Card {
     this._elementImage = this._element.querySelector('.element__image');
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
+    this._element.querySelector('.element__like-counter').textContent = this._likes;
     this._setEventListeners();
     return this._element;
   };

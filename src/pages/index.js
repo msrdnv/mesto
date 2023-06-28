@@ -52,25 +52,25 @@ const handleCardClick = (elementImage) => {
 
 const handleServerLike = (likeButton, cardId) => {
   if (likeButton.classList.contains('element__like-button_activated')) {
-    //console.log('Лайк поставлен карточке c ID ' + cardId);
     api.putLikeCard(cardId)
     .then((res) => {
       return res;
     })
     .then((data) => {
       console.log(data.likes.length);
+      likeButton.nextElementSibling.textContent = data.likes.length;
     })
     .catch((err) => {
       console.log(err);
     });
   } else {
-    //console.log('Лайк снят у карточки c ID ' + cardId);
     api.deleteLikeCard(cardId)
     .then((res) => {
       return res;
     })
     .then((data) => {
       console.log(data.likes.length);
+      likeButton.nextElementSibling.textContent = data.likes.length;
     })
     .catch((err) => {
       console.log(err);
