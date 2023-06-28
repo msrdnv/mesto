@@ -1,7 +1,6 @@
 import './index.css';
 
-import { profileForm, cardForm, nameInput, aboutInput, profilePopupOpenButton, cardPopupOpenButton, formSelectors, initialCards } from '../utils/constants.js';
-import { handleCardClick } from '../utils/utils.js';
+import { profileForm, cardForm, usernameInput, aboutInput, profilePopupOpenButton, cardPopupOpenButton, formSelectors } from '../utils/constants.js';
 
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
@@ -9,8 +8,35 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
+import { Api } from '../components/Api.js';
 
-const userInfo = new UserInfo({nameSelector : '.profile__name', aboutSelector : '.profile__about'});
+export const api = new Api();
+
+api.getInitialCards()
+.then((res) => {
+  return res;
+})
+.then((data) => {
+  console.log(data);
+  cardListRenderer.renderItems(data);
+})
+.catch((err) => {
+  console.log(err);
+});
+
+api.getUserData()
+.then((res) => {
+  return res;
+})
+.then((data) => {
+  console.log(data);
+  userInfo.setUserInfo(data.name, data.about);
+})
+.catch((err) => {
+  console.log(err);
+});
+
+const userInfo = new UserInfo({usernameSelector : '.profile__name', aboutSelector : '.profile__about'});
 
 const cardFormValidator = new FormValidator(formSelectors, cardForm);
 const profileFormValidator = new FormValidator(formSelectors, profileForm);
@@ -18,14 +44,47 @@ const profileFormValidator = new FormValidator(formSelectors, profileForm);
 cardFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 
+const handleCardClick = (elementImage) => {
+  elementImage.addEventListener('click', () => {
+    imagePopup.open(elementImage);
+  });
+};
+
+const handleServerLike = (likeButton, cardId) => {
+  if (likeButton.classList.contains('element__like-button_activated')) {
+    //console.log('Лайк поставлен карточке c ID ' + cardId);
+    api.putLikeCard(cardId)
+    .then((res) => {
+      return res;
+    })
+    .then((data) => {
+      console.log(data.likes.length);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  } else {
+    //console.log('Лайк снят у карточки c ID ' + cardId);
+    api.deleteLikeCard(cardId)
+    .then((res) => {
+      return res;
+    })
+    .then((data) => {
+      console.log(data.likes.length);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+};
+
 const createCard = (cardData) => {
-  const card = new Card(cardData, '.element-template', handleCardClick);
+  const card = new Card(cardData, '.element-template', handleCardClick, handleServerLike);
   const cardElement = card.generateCard();
-  cardList.addItem(cardElement);
+  cardListRenderer.addItem(cardElement);
 }
 
-const cardList = new Section ({
-  items: initialCards,
+const cardListRenderer = new Section ({
   renderer: (cardData) => {
     createCard(cardData);
   },
@@ -33,17 +92,17 @@ const cardList = new Section ({
   '.gallery'
 );
 
-cardList.renderItems();
-
 const submitProfileForm = (evt, inputValues) => {
   evt.preventDefault();
-  userInfo.setUserInfo(inputValues.name, inputValues.about);
+  userInfo.setUserInfo(inputValues.username, inputValues.about);
+  api.editUserData({name : inputValues.username, about: inputValues.about});
   profilePopup.close();
 };
 
 const submitCardForm = (evt, inputValues) => {
   evt.preventDefault();
   createCard(inputValues);
+  api.postNewCard(inputValues);
   evt.target.reset();
   cardPopup.close();
 };
@@ -56,7 +115,7 @@ export const imagePopup = new PopupWithImage('.image-popup');
 imagePopup.setEventListeners();
 
 profilePopupOpenButton.addEventListener('click', () => {
-  nameInput.value = userInfo.getUserInfo().name;
+  usernameInput.value = userInfo.getUserInfo().username;
   aboutInput.value = userInfo.getUserInfo().about;
   profilePopup.open();
   profileFormValidator.toggleButtonState();

@@ -1,7 +1,7 @@
 export const profileForm = document.forms['profile-form'];
 export const cardForm = document.forms['card-form'];
 
-export const nameInput = profileForm.elements['name'];
+export const usernameInput = profileForm.elements['username'];
 export const aboutInput = profileForm.elements['about'];
 
 export const profilePopupOpenButton = document.querySelector('.profile__edit-button');
@@ -18,7 +18,7 @@ export const formSelectors = {
   errorClass: 'popup__error_visible'
 };
 
-const imageKronplatz = new URL('../images/01-kronplatz.jpg', import.meta.url);
+/*const imageKronplatz = new URL('../images/01-kronplatz.jpg', import.meta.url);
 const imageEcrins = new URL('../images/02-ecrins.jpg', import.meta.url);
 const imageSaltLake = new URL('../images/03-salt_lake.jpg', import.meta.url);
 const imageZihuatanejo = new URL('../images/04-zihuatanejo.jpg', import.meta.url);
@@ -50,4 +50,4 @@ export const initialCards = [
     description: 'Доломиты',
     link: imageDolomites
   },
-];
+]; */
