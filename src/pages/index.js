@@ -12,7 +12,10 @@ import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
 export const api = new Api();
-export const imagePopup = new PopupWithImage('.image-popup');
+
+export const confirmationPopup = new PopupWithConfirmation('.confirmation-popup');
+confirmationPopup.setEventListeners();
+const imagePopup = new PopupWithImage('.image-popup');
 imagePopup.setEventListeners();
 
 const cardFormValidator = new FormValidator(formSelectors, cardForm);
@@ -90,8 +93,7 @@ const handleDeleteButton = (element, ownerId, cardId) => {
   if (ownerId === '776182348fc2690689a97f1a') {
     element.firstElementChild.classList.add('element__delete-button_visible');
     element.firstElementChild.addEventListener('click', () => {
-      confirmationPopup.open();
-      confirmationPopup.setConfirmationListener(cardId, element);
+      confirmationPopup.open(cardId, element);
     });
   };
 };
@@ -150,31 +152,12 @@ const submitAvatarForm = (evt, inputValues) => {
   avatarPopup.close();
 };
 
-const handleConfirmation = (evt, cardId, element) => {
-  evt.preventDefault();
-  api.deleteCard(cardId)
-  .then((res) => {
-    return res;
-  })
-  .then(() => {
-    element.remove();
-    element = null;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-  confirmationPopup.close();
-};
-
 const profilePopup = new PopupWithForm('.profile-popup', submitProfileForm);
 profilePopup.setEventListeners();
 const cardPopup = new PopupWithForm('.card-popup', submitCardForm);
 cardPopup.setEventListeners();
 const avatarPopup = new PopupWithForm('.avatar-popup', submitAvatarForm);
 avatarPopup.setEventListeners();
-const confirmationPopup = new PopupWithConfirmation('.confirmation-popup', handleConfirmation);
-confirmationPopup.setEventListeners();
-
 
 profilePopupOpenButton.addEventListener('click', () => {
   usernameInput.value = userInfo.getUserInfo().username;
