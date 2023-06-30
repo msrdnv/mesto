@@ -10,7 +10,14 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
-export const api = new Api();
+const cardFormValidator = new FormValidator(formSelectors, cardForm);
+const profileFormValidator = new FormValidator(formSelectors, profileForm);
+
+cardFormValidator.enableValidation();
+profileFormValidator.enableValidation();
+
+const userInfo = new UserInfo({usernameSelector : '.profile__name', aboutSelector : '.profile__about'});
+const api = new Api();
 
 api.getInitialCards()
 .then((res) => {
@@ -36,14 +43,6 @@ api.getUserData()
   console.log(err);
 });
 
-const userInfo = new UserInfo({usernameSelector : '.profile__name', aboutSelector : '.profile__about'});
-
-const cardFormValidator = new FormValidator(formSelectors, cardForm);
-const profileFormValidator = new FormValidator(formSelectors, profileForm);
-
-cardFormValidator.enableValidation();
-profileFormValidator.enableValidation();
-
 const handleCardClick = (elementImage) => {
   elementImage.addEventListener('click', () => {
     imagePopup.open(elementImage);
@@ -57,7 +56,6 @@ const handleServerLike = (likeButton, cardId) => {
       return res;
     })
     .then((data) => {
-      console.log(data.likes.length);
       likeButton.nextElementSibling.textContent = data.likes.length;
     })
     .catch((err) => {
@@ -69,7 +67,6 @@ const handleServerLike = (likeButton, cardId) => {
       return res;
     })
     .then((data) => {
-      console.log(data.likes.length);
       likeButton.nextElementSibling.textContent = data.likes.length;
     })
     .catch((err) => {
@@ -101,8 +98,16 @@ const submitProfileForm = (evt, inputValues) => {
 
 const submitCardForm = (evt, inputValues) => {
   evt.preventDefault();
-  createCard(inputValues);
-  api.postNewCard(inputValues);
+  api.postNewCard(inputValues)
+    .then((res) => {
+      return res;
+    })
+    .then((data) => {
+      createCard({name: inputValues.name, link: inputValues.link, likes: data.likes, _id : data._id});
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   evt.target.reset();
   cardPopup.close();
 };
