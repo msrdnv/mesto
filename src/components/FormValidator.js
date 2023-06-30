@@ -48,9 +48,7 @@ export class FormValidator {
   };
 
   _hasInvalidInput () {
-    return this._inputsList.some((inputElement) => {
-      return !inputElement.validity.valid;
-    });
+    return this._inputsList.some((inputElement) => !inputElement.validity.valid);
   };
 
   toggleButtonState () {

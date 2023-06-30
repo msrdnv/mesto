@@ -22,15 +22,22 @@ export class Popup {
 
   setEventListeners() {
     this._closeIcon = this._popup.querySelector('.popup__close-icon');
-    this._closeIcon.addEventListener('click', () => {
-      this.close();
-    });
+    this._closeIcon.addEventListener('click', () => this.close());
     this._popup.addEventListener('mousedown', (event) => {
       if (event.target === event.currentTarget) {
         this.close();
       };
     });
   };
+
+  renderLoading(isLoading) {
+    this._submitButton = this._popup.querySelector('.popup__submit-button');
+    if (isLoading === true) {
+      this._submitButton.textContent = 'Сохранение...';
+    } else if (isLoading === false) {
+      this._submitButton.textContent = 'Сохранить';
+    };
+  }
 };
 
 

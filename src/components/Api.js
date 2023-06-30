@@ -12,10 +12,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   };
 
@@ -30,10 +30,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   };
 
@@ -47,10 +47,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   };
 
@@ -65,10 +65,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   };
 
@@ -82,10 +82,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 
@@ -99,10 +99,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 
@@ -116,10 +116,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 
@@ -134,10 +134,10 @@ export class Api {
     })
     .then(res => {
       if (res.ok) {
-        console.log(res);
         return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
       }
-    return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 };
