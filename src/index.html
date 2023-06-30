@@ -42,6 +42,26 @@
       </form>
     </div>
   </div>
+  <div class="popup confirmation-popup">
+    <div class="popup__container popup__container_place-confirmation">
+      <button class="popup__close-icon" type="button"></button>
+      <h2 class="popup__title popup__title_place-confirmation">Вы уверены?</h2>
+      <form class="popup__form" name="confirmation-form" novalidate>
+        <button class="popup__submit-button" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup avatar-popup">
+    <div class="popup__container popup__container_place-avatar">
+      <button class="popup__close-icon" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" name="avatar-form" novalidate>
+        <input id="avatar-link-input" class="popup__input" type="url" name="avatar" placeholder="Ссылка на новый аватар" required>
+        <span class="avatar-link-input-error popup__error popup__error_visible"></span>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
 
   <header class="header">
     <img class="header__logo" src="<%=require('./images/logo-mesto-white.svg')%>" alt="Логотип Mesto Russia">
@@ -50,7 +70,10 @@
   <main class="content">
     <section class="profile">
       <div class="profile__info">
-        <img class="profile__avatar" src="<%=require('./images/kusto.png')%>" alt="Аватар профиля">
+        <div class="profile__avatar-data">
+          <img class="profile__avatar" src="<%=require('./images/kusto.png')%>" alt="Аватар профиля">
+          <button class="profile__avatar-update-icon" type="button"></button>
+        </div>
         <div class="profile__text-data">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>

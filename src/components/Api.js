@@ -43,7 +43,7 @@ export class Api {
       headers:  {
         authorization: '8b924108-8ca1-4711-b126-8a96bbad8ecc',
         'Content-Type': 'application/json'
-      },
+      }
     })
     .then(res => {
       if (res.ok) {
@@ -78,7 +78,7 @@ export class Api {
       headers:  {
         authorization: '8b924108-8ca1-4711-b126-8a96bbad8ecc',
         'Content-Type': 'application/json'
-      },
+      }
     })
     .then(res => {
       if (res.ok) {
@@ -95,7 +95,42 @@ export class Api {
       headers:  {
         authorization: '8b924108-8ca1-4711-b126-8a96bbad8ecc',
         'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+      if (res.ok) {
+        console.log(res);
+        return res.json();
+      }
+    return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  deleteCard (cardId) {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-69/cards/${cardId}` , {
+      method: 'DELETE',
+      headers:  {
+        authorization: '8b924108-8ca1-4711-b126-8a96bbad8ecc',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+      if (res.ok) {
+        console.log(res);
+        return res.json();
+      }
+    return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  editUserAvatar (data) {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-69/users/me/avatar` , {
+      method: 'PATCH',
+      headers:  {
+        authorization: '8b924108-8ca1-4711-b126-8a96bbad8ecc',
+        'Content-Type': 'application/json'
       },
+      body: JSON.stringify(data)
     })
     .then(res => {
       if (res.ok) {

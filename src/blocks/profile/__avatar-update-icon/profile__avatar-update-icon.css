@@ -1,0 +1,14 @@
+.profile__avatar-update-icon {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 26px;
+  height: 26px;
+  background: url(../../../images/update-avatar-icon.svg) transparent no-repeat;
+  background-size: contain;
+  grid-area: avatar;
+  cursor: pointer;
+  z-index: 1;
+}
+
