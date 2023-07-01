@@ -29,15 +29,6 @@ export class Popup {
       };
     });
   };
-
-  renderLoading(isLoading) {
-    this._submitButton = this._popup.querySelector('.popup__submit-button');
-    if (isLoading === true) {
-      this._submitButton.textContent = 'Сохранение...';
-    } else if (isLoading === false) {
-      this._submitButton.textContent = 'Сохранить';
-    };
-  }
 };
 
 

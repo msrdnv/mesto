@@ -1,12 +1,10 @@
 import { api, confirmationPopup } from "../pages/index.js";
 
-export const handleDeleteCard = (cardId, element) => {
-  confirmationPopup.close();
-  api.deleteCard(cardId)
-  .then((res) => res)
+export const handleDeleteCard = (card) => {
+  api.deleteCard(card.getCardId())
   .then(() => {
-    element.remove();
-    element = null;
+    confirmationPopup.close();
+    card.deleteCard();
   })
-  .catch((err) => console.log(err));
+  .catch(console.error)
 };
