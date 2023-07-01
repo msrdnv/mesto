@@ -113,8 +113,7 @@ const submitAvatarForm = (evt, inputValues) => {
   evt.preventDefault();
   avatarPopup.renderLoading(true);
   api.editUserAvatar({avatar: inputValues.avatar})
-  .then((res) => res)
-  .then((data) => {
+  .then((res) => {
     userInfo.setUserInfo(data);
     avatarPopup.close();
   })
