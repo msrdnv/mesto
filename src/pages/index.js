@@ -50,26 +50,26 @@ const handleCardClick = (elementImage) => elementImage.addEventListener('click',
 const handleLike = (card) => {
   if (card.checkLikeButton()) {
     api.deleteLikeCard(card.getCardId())
-    .then((res) => card.setLikes(res))
+    .then((res) => {
+      card.toggleLikeButton();
+      card.setLikeCounter(res);
+    })
     .catch(console.error)
   } else {
     api.putLikeCard(card.getCardId())
-    .then((res) => card.setLikes(res))
+    .then((res) => {
+      card.toggleLikeButton();
+      card.setLikeCounter(res);
+    })
     .catch(console.error)
   }
 };
 
-const handleDeleteButton = (card) => {
-  if (card.getCardOwnerId() === userInfo.id) {
-    card.setDeleteButton();
-  };
-};
-
-const handleDeleteConfirmation = (card) => confirmationPopup.open(card);
+const handleDelete = (card) => confirmationPopup.open(card);
 
 const getCard = (cardData) => {
-  const cardElement = new Card(cardData, '.element-template', handleCardClick, handleLike, handleDeleteButton, handleDeleteConfirmation);
-  return cardElement.generateCard();
+  const cardElement = new Card(cardData, '.element-template', handleCardClick, handleLike, handleDelete);
+  return cardElement.generateCard(userInfo.id);
 };
 
 const createCard = (cardData) => {
