@@ -50,16 +50,16 @@ const handleCardClick = (elementImage) => elementImage.addEventListener('click',
 const handleLike = (card) => {
   if (card.checkLikeButton()) {
     api.deleteLikeCard(card.getCardId())
-    .then((res) => {
+    .then((data) => {
       card.toggleLikeButton();
-      card.setLikeCounter(res);
+      card.setLikeCounter(data);
     })
     .catch(console.error)
   } else {
     api.putLikeCard(card.getCardId())
-    .then((res) => {
+    .then((data) => {
       card.toggleLikeButton();
-      card.setLikeCounter(res);
+      card.setLikeCounter(data);
     })
     .catch(console.error)
   }
@@ -87,7 +87,6 @@ const submitProfileForm = (evt, inputValues) => {
   evt.preventDefault();
   profilePopup.renderLoading(true);
   api.editUserData({name : inputValues.name, about: inputValues.about})
-  .then((res) => res)
   .then((data) => {
     userInfo.setUserInfo(data);
     profilePopup.close();
@@ -100,7 +99,6 @@ const submitCardForm = (evt, inputValues) => {
   evt.preventDefault();
   cardPopup.renderLoading(true);
   api.postNewCard(inputValues)
-  .then((res) => res)
   .then((data) => {
     createCard({name: inputValues.name, link: inputValues.link, likes: data.likes, _id: data._id, owner: {_id: data.owner._id}});
     cardPopup.close();
@@ -113,7 +111,7 @@ const submitAvatarForm = (evt, inputValues) => {
   evt.preventDefault();
   avatarPopup.renderLoading(true);
   api.editUserAvatar({avatar: inputValues.avatar})
-  .then((res) => {
+  .then((data) => {
     userInfo.setUserInfo(data);
     avatarPopup.close();
   })
